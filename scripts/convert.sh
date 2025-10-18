@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ -n "$1" ] && [ -e $1 ]; then
-	file=$1
+Check if dependencies file exists
+if [ -n "$1" ] && [ -e "$1" ]; then
+    file="$1"
+    echo " ** Using dependencies file: $file"
 else
-	echo " ** Input File : $1 does not exist"
-	echo " ** Please specify the correct dependencies file"
-	echo " ** Usage : bash <path-to-script> <path-to-dependencies-file> [<path-to-local-manifest>]"
-	exit 1
+    echo " ** No twrp.dependencies file found — skipping dependency import."
+    exit 0
 fi
 
 if [ -n "$2" ]; then
